@@ -1,17 +1,18 @@
 pipeline {
     agent any
-
+    
     stages {
-        stage('Hello') {
+        stage ('clone the repository ') {
             steps {
-                echo 'Hello World. tghis fisrt stage'
+                git branch: 'patch-2', url: 'https://github.com/gani3733/user-registration.git'
             }
         }
         
-        stage('This is 2nd stage') {
+        stage('Build the application ') {
             steps {
-                echo 'This is 2nd stage'
+                sh 'mvn clean package'
             }
         }
+        
     }
 }
